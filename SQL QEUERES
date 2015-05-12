@@ -1,0 +1,48 @@
+
+Inserts:
+	insert into AMATEUR(score, id) values (78, 99)
+	insert into PROFESSIONAL(score, id, match point) values (33333, 98, 4)
+	insert into DIVISION(level, start date, end date) values ('EAGLE', 2015-10-21)
+	insert into MATCH(Award, point) values ('BloodKing', 77)
+	insert into attend(score id, award, ranking) values (1212, 33, 'BloodKing', 5)
+	 
+
+Deletes: 
+	
+	delete from AMATEURE where id = 99; 
+	delete from PROFESSIONAL where id = 98;
+	delete from DIVISION where  start date = 2015-10-21; 
+	delete from MATCH where award ='BloodKing';
+	delete from attend where id = 33; 
+	
+updates: 
+	update AMATEUR set score = 223 where id = 78; 			
+	update PROFESSIONAL set match point = 8 where id = 48; 
+	update DIVISION set level = 'SNAKE' where start date = 2015-09-30; 
+	update MATCH set AWARD = 'FROGYFROGY' where point = 1; 
+	update ATTENED set ranking = 8 where id = 22;  	
+
+
+Selects: 
+		
+	Select match.point from professional, match 
+		where professional.point = 50;
+	Select match point from PROFESSIONAL where match point = 20; 
+
+	// gets all current snakes in the division
+	Select * from Division where level = 'SNAKES';
+
+	// gets the current level of a player whos score is atleast 20 
+	Select level from DIVISION 
+		where id in 
+			( select id from PLAYER 
+			where min (score = 20));
+
+	// to get all the ameature players who have the level frog 
+	Select id from AMEATURE where exists 
+				( select name from PLAYER where exits 
+					(select * from DIVISION 
+						where level = 'FROG')));  		
+
+
+
